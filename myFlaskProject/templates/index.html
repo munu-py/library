@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Shared Library</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="page-wrap">
+
+			<!-- Nav -->
+				<nav id="nav">
+
+				</nav>
+
+			<!-- Main -->
+				<section id="main">
+
+					<!-- Banner -->
+
+					<style>
+						#banner{
+						background-image: url({{url_for('static',filename='images/library.jpg')}});
+						background-size: cover;
+						}
+
+					</style>
+						<section id="banner">
+							<div class="inner">
+								<h1>Virtual Library</h1>
+								<p>Why buy when you can share and care!</p>
+								<ul class="actions">
+									<li><a href="{{ url_for('main.about') }}" class="button alt scrolly big">Know more about us</a></li>
+									<p>Not a member yet?</p>
+									<h4><a href="/signup"> Click here to sign up </a></h4>
+								</ul>
+							</div>
+						</section>
+
+
+
+
+					<!-- Contact -->
+						<section id="contact">
+							<!-- Social -->
+								<div class="social column">
+									<h3>About Us</h3>
+									<p> Sharing books makes reading easier. We have created a platform where you can come forward and share and borrow books with one and all, making this planet a slightly better place to live in.</p>
+									<p>When trees are cut down, their stored carbon is released into the air as carbon dioxide. Deforestation is responsible for about 10 percentage of all global warming emissions. Let's come together and share our books and knowledge with each other. Because we are here to help you with it. Upload books you are willing to share, choose books you are going to borrow and we will provide pickup and delivery at your doorstep. </p>
+									<h3>Contact Us</h3>
+									<ul class="icons">
+										<li><a href="#"> sharedlibs@gmail.com </a></li>
+										<li><a href="#"> (+91)9434250569 </a></li>
+									</ul>
+								</div>
+
+							<!-- Form -->
+								<div class="column">
+									{% with messages=get_flashed_messages(with_categories=true) %}
+										{% if messages %}
+											{% for category,message in messages %}
+												<div class="alert alert-{{category}}">
+													{{message}}
+												</div>
+											{% endfor %}
+										{% endif %}
+									{% endwith%}
+									<h4 >Login</h4>
+									<form action="/home" method="post">
+										{{form.hidden_tag()}}
+										<div class="field half first">
+											{{form.email.label}}
+        									{% if form.email.errors %}
+											  {{form.email(class="form-control form-control-lg is-invalid")}}
+											  <div class="invalid-feedback">
+												{% for error in form.email.errors %}
+												  <span>{{error}}</span>
+												{% endfor %}
+											  </div>
+											{%else %}
+												{{form.email}}
+											{% endif %}
+										</div>
+										<div class="field half ">
+
+										</div>
+										<div class="field half first">
+											{{form.password.label}}
+												 {% if form.password.errors %}
+												  {{form.password(class="form-control form-control-lg is-invalid")}}
+												  <div class="invalid-feedback">
+													{% for error in form.password.errors %}
+													  <span>{{error}}</span>
+													{% endfor %}
+												  </div>
+												 {% else %}
+													{{form.password}}
+												 {% endif %}
+										</div>
+										<div class="field half first">
+											{{form.remember(class="form-check-input")}}
+											{{form.remember.label(class="form-check-label")}}
+										</div>
+										<div class="actions">
+											{{form.submit(class="btn btn-outline-info")}}
+										</div>
+									</form>
+								</div>
+
+
+						</section>
+
+
+				</section>
+		</div>
+
+		<!-- Scripts -->
+			<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/jquery.poptrox.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/skel.min.js')}}"></script>
+			<script src="{{url_for('static',filename='jjs/util.js')}}"></script>
+			<script src="{url_for('static',filename='js/main.js')}}"></script>
+
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Sign Up</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body id="body_sign">
+                <style>
+						#body_sign{
+						background-image: url({{url_for('static',filename='images/library.jpg')}});
+						background-size: cover;
+						}
+
+					</style>
+
+<div class="page-wrap">
+
+    <header id="header">
+							<div><a href="{{url_for('users.login')}}">Home</a></div>
+						</header>
+
+  <form action="" method="post" enctype="multipart/form-data">
+    <div class="column" id="signup">
+        <style>
+      #signup {
+        color:#000000
+        display: block;
+        font-weight: bold;
+        padding-top: :50px;
+        padding-left: 100px;
+        position: relative;
+
+    }
+    </style>
+    {{form.hidden_tag()}}
+
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4" style="color:#ffffff">SignUp to create your own library: </legend>
+      <h4 style="color:#ffffff">Please fill in the details:</h4>
+          <div class="form-group " >
+            {{form.username.label (class="form-control-label", style="color:#ffffff") }}
+            {% if form.username.errors %}
+              {{form.username(class="form-control form-control-lg is-invalid")}}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span style="color:#ffffff">{{error}}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+                {{form.username (class="form-control form-control-lg")}}
+            {% endif %}
+
+        </div>
+          <div class="form-group " >
+            {{form.email.label (class="form-control-label",style="color:#ffffff") }}
+            {% if form.email.errors %}
+              {{form.email(class="form-control form-control-lg is-invalid")}}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  <span style="color:#ffffff">{{error}}</span>
+                {% endfor %}
+              </div>
+            {%else %}
+                {{form.email (class="form-control form-control-lg")}}
+            {% endif %}
+          </div>
+          <div class="form-group ">
+            {{form.address.label (class="form-control-label",style="color:#ffffff") }}
+            {% if form.address.errors %}
+              {{form.address(class="form-control form-control-lg is-invalid")}}
+              <div class="invalid-feedback">
+                {% for error in form.address.errors %}
+                  <span style="color:#ffffff">{{error}}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+                {{form.address (class="form-control form-control-lg")}}
+            {% endif %}
+          </div>
+          <div class="form-group " >
+            {{form.password.label (class="form-control-label",style="color:#ffffff") }}
+             {% if form.password.errors %}
+              {{form.password(class="form-control form-control-lg is-invalid")}}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span style="color:#ffffff">{{error}}</span>
+                {% endfor %}
+              </div>
+             {% else %}
+                {{form.password (class="form-control form-control-lg")}}
+             {% endif %}
+          </div>
+          <div class="form-group ">
+            {{form.confirm_password.label (class="form-control-label",style="color:#ffffff") }}
+             {% if form.confirm_password.errors %}
+              {{form.confirm_password(class="form-control form-control-lg is-invalid")}}
+              <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                  <span style="color:#ffffff">{{error}}</span>
+                {% endfor %}
+              </div>
+             {% else %}
+                {{form.confirm_password (class="form-control form-control-lg")}}
+             {% endif %}
+          </div>
+            <div class="form-group " >
+            {{form.package.label (class="form-control-label",style="color:#ffffff") }}
+             {{form.package (style="color:#ffffff") }}
+          </div>
+     </fieldset>
+      <div class="form_group">
+        {{form.submit(class="btn btn-outline-info")}}
+      </div>
+    </div>
+
+  </form>
+</div>
+</body>
+
+</html>

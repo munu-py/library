@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+
+    <title>Account</title>
+
+</head>
+<body id="body_sign">
+    <style>
+						#body_sign{
+						background-image: url({{url_for('static',filename='images/library.jpg')}});
+						background-size: cover;
+						}
+
+					</style>
+    <header class="site-header">
+      <div class="media">
+        <div class="media-body">
+          <h4 class="account-heading" style="color:#ffffff">Welcome {{ current_user.username }}</h4>
+          <h5 class="account-heading" style="color:#ffffff">{{ current_user.email }}</h5>
+            <h6 class="account-heading" style="color:#ffffff">Your selected package: {{ pckgname }}</h6>
+          <h6 class="account-heading" style="color:#ffffff">Your reward points: {{ current_user.points_earned }}</h6>
+        </div>
+      </div>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <div class="content-section">
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="column" >
+                  <style>
+                  #signupform {
+                    color:#ffffff
+                    display: block;
+                    font-weight: bold;
+                    padding-top: :50px;
+                    padding-left: 100px;
+                    position: relative;
+
+                }
+                </style>
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="color:#ffffff">Account Info</legend>
+                <div class="form-group" style="color:#ffffff">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span  style="color:#ffffff">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group" style="color:#ffffff">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback" >
+                            {% for error in form.email.errors %}
+                                <span style="color:#ffffff">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group" style="color:#ffffff">
+                    {{ form.package.label(class="form-control-label") }}
+                    {% if form.package.errors %}
+                        {{ form.package(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.package.errors %}
+                                <span style="color:#ffffff">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.package(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group" >
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            </div>
+        </form>
+    </div>
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3 style="color:#ffffff">Actions</h3>
+              <h5  style="color:#ffffff">Click below for more fun.</h5>
+              <ul class="list-group">
+                <a href="{{url_for('books.bookadd')}}" class="list-group-item list-group-item-light">Add Books</a>
+                <a href="{{url_for('books.mylibrary')}}" class="list-group-item list-group-item-light">View your Library</a>
+                <a href="{{url_for('books.library')}}" class="list-group-item list-group-item-light">Buy Books</a>
+			  	<a href="{{url_for('users.logout')}}" data-tag="logout" class="list-group-item list-group-item-light">Logout</a>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

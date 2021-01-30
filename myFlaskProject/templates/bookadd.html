@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Sign Up</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body id="body_sign">
+                  <style>
+						#body_sign{
+						background-image: url({{url_for('static',filename='images/library.jpg')}});
+						background-size: cover;
+						}
+
+					</style>
+<div class="page-wrap">
+<h4 style="color:#ffffff" ><a href="{{url_for('users.profile')}}">Home Page</a></h4>
+
+  <form action="" method="post">
+    <div class="column" id="bookadd">
+      <style>
+      #bookadd {
+
+        color:#ffffff
+        display: block;
+        font-weight: bold;
+        padding-top: :50px;
+        padding-left: 100px;
+        position: relative;
+
+    }
+    </style>
+    {{form.hidden_tag()}}
+
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4" style="color:#ffffff">Add Books you want to share: </legend>
+      <h4 style="color:#ffffff">Please fill in the details:</h4>
+      <div class="form-group " >
+        {{form.bookname.label (class="form-control-label",style="color:#ffffff")}}
+        {% if form.bookname.errors %}
+          {{form.bookname(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.bookname.errors %}
+              <span style="color:#ffffff">{{error}}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+            {{form.bookname}}
+        {% endif %}
+
+      </div>
+      <div class="form-group " >
+        {{form.author.label (class="form-control-label",style="color:#ffffff")}}
+        {% if form.author.errors %}
+          {{form.author(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.author.errors %}
+              <span style="color:#ffffff">{{error}}</span>
+            {% endfor %}
+          </div>
+        {%else %}
+            {{form.author}}
+        {% endif %}
+      </div>
+      <div class="form-group " >
+        {{form.language.label (class="form-control-label",style="color:#ffffff")}}
+        {% if form.language.errors %}
+          {{form.language(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.language.errors %}
+              <span style="color:#ffffff">{{error}}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+            {{form.language}}
+        {% endif %}
+      </div>
+      <div class="form-group " >
+        {{form.mrp_book.label (class="form-control-label",style="color:#ffffff")}}
+         {% if form.mrp_book.errors %}
+          {{form.mrp_book(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.mrp_book.errors %}
+              <span style="color:#ffffff">{{error}}</span>
+            {% endfor %}
+          </div>
+         {% else %}
+            {{form.mrp_book}}
+         {% endif %}
+      </div>
+      <div class="form-group " >
+        {{form.quality.label (class="form-control-label",style="color:#ffffff")}}
+          {% if form.quality.errors %}
+          {{form.quality(style="color:#ffffff")}}
+          <div class="invalid-feedback">
+            {% for error in form.quality.errors %}
+              <span style="color:#ffffff">{{error }}</span>
+            {% endfor %}
+          </div>
+         {% else %}
+          {{form.quality (style="color:#ffffff")}}
+         {% endif %}
+      </div>
+
+     </fieldset>
+      <div class="form_group">
+        {{form.submit(class="btn btn-outline-info")}}
+      </div>
+    </div>
+
+  </form>
+
+</div>
+</body>
+
+</html>
